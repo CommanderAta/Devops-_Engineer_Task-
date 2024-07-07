@@ -1,0 +1,39 @@
+---
+- name: Configure EC2 instance with Nginx
+  hosts: webserver
+  become: yes
+
+  tasks:
+    - name: Update apt repository and cache
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Create the HTML directory
+      file:
+        path: /var/www/html
+        state: directory
+
+    - name: Deploy the HTML page
+      copy:
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>Hello, World!</title>
+          </head>
+          <body>
+              <h1>Hello, World!</h1>
+          </body>
+          </html>
+        dest: /var/www/html/index.html
+
+    - name: Ensure Nginx is started and enabled
+      service:
+        name: nginx
+        state: started
+        enabled: yes

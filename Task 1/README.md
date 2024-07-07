@@ -50,7 +50,7 @@ This project demonstrates setting up a basic web application infrastructure on A
 2. **Configure Inventory**: Update the Ansible inventory file with the public IP of your EC2 instance.
 3. **Run Ansible Playbook**:
     ```bash
-    ansible-playbook -i inventory playbook.yml
+    ansible-playbook -i hosts.ini nginx-playbook.yml
     ```
 4. **Verify Configuration**: Access the EC2 instance's public IP in your browser to see the "Hello, World!" page.
 

@@ -1,5 +1,5 @@
 resource "aws_instance" "windows_server" {
-  for_each = var.instances
+  for_each                = var.instances
   associate_public_ip_address = true
   ami                     = each.value.ami_id
   instance_type           = each.value.instance_type

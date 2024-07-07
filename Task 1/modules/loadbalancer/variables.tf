@@ -69,11 +69,11 @@ variable "listeners" {
     {
       port     = 80,
       protocol = "HTTP"
-    },
-    {
-      port     = 443,
-      protocol = "HTTPS"
     }
+    # {
+    #   port     = 443,
+    #   protocol = "HTTPS"
+    # }
   ]
 }
 
@@ -88,3 +88,8 @@ variable "ec2_instance_properties" {
     path_pattern = string
   }))
 }
+
+# variable "certificate_arn" {
+#   description = "ARN of the SSL certificate for HTTPS listener"
+#   type        = string
+# }

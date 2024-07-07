@@ -1,5 +1,5 @@
 output "instance_ids" {
-  value = { for k, instance in aws_instance.windows_server : k => instance.id }
+  value = [for instance in aws_instance.windows_server : instance.id]
 }
 
 output "instance_public_ips" {

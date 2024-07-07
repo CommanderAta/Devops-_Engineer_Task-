@@ -11,23 +11,23 @@ module "vpc" {
 }
 
 
-# module "loadbalancer" {
-#   source                        = "../modules/loadbalancer"
-#   vpc_id                        = module.vpc.vpc_id
-#   subnet_public                 = module.vpc.subnet_public
-#   alb_properties                = var.alb_properties
-#   target_group_properties       = var.target_group_properties
-#   app_name                      = var.app_name
-#   environment_name              = var.environment_name
-#   main_load_balancer_sg_egress  = var.main_load_balancer_sg_egress
-#   main_load_balancer_sg_ingress = var.main_load_balancer_sg_ingress
-#   listeners = var.listeners
-#   ec2_instance_ids              = module.ec2-instances.instance_ids
-#   ec2_instance_properties       = var.ec2_instance_properties
+module "loadbalancer" {
+  source                        = "../modules/loadbalancer"
+  vpc_id                        = module.vpc.vpc_id
+  subnet_public                 = module.vpc.subnet_public
+  alb_properties                = var.alb_properties
+  target_group_properties       = var.target_group_properties
+  app_name                      = var.app_name
+  environment_name              = var.environment_name
+  main_load_balancer_sg_egress  = var.main_load_balancer_sg_egress
+  main_load_balancer_sg_ingress = var.main_load_balancer_sg_ingress
+  listeners                     = var.listeners
+  ec2_instance_ids              = module.ec2-instances.instance_ids
+  ec2_instance_properties       = var.ec2_instance_properties
 
-#   depends_on       = [module.vpc]
+  depends_on       = [module.vpc, module.ec2-instances]
 
-# }
+}
 
 
 
